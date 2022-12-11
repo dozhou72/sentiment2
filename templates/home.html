@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="UTF-8">
+        <title>{{name}}</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <style>
+          body {
+            background-color: lightblue;
+          }
+          </style>
+    </head>
+    <h2 style="text-align:center;" >Sentiment Analysis and Feature Extractions</h2>
+    <body>
+
+        <label for="method" style=" width: 150vw; margin-left : 25vw;">Choose a method for sentiment</label>
+        
+        
+
+
+
+
+
+        
+        <form action="{% url 'result' %}"style=" width: 150vw; margin-left : 25vw;">
+        {% csrf_token %}
+        Text: <input type="text" required name="Text"style="width:400px; height:50px;"> <br><br>  
+      <input type="submit" name="My Model" value="My Model" >
+        </form> 
+        <hr>
+        <form action="{% url 'result1' %}"style=" width: 150vw; margin-left : 25vw;">
+          {% csrf_token %}
+          Text: <input type="text" required name="Text1"style="width:400px; height:50px;"> <br><br> 
+        <input type="submit" name="textblot" value="textblot" >
+          </form> 
+
+          <hr>
+          <label for="method" style=" width: 150vw; margin-left : 25vw;">Choose a method for feature extractions</label>
+          <form action="{% url 'pos1' %}"style=" width: 150vw; margin-left : 25vw;">
+            {% csrf_token %}
+            Text: <input type="text" required name="Text2"style="width:400px; height:50px;"> <br><br> 
+          <input type="submit" name="postag" value="postag" >
+            </form>    
+          
+            <hr>
+          <form action="{% url 'category' %}"style=" width: 150vw; margin-left : 25vw;">
+             {% csrf_token %}
+             HTML: <input type="text" required name="Text3"style="width:400px; height:50px;"> <br><br>
+           <input type="submit" name="category" value="category" >
+              </form>    
+                 
+                <hr>
+        <form action="{% url 'topic' %}"style=" width: 150vw; margin-left : 25vw;">
+                {% csrf_token %}
+                HTML: <input type="text" required name="Text4"style="width:400px; height:50px;"> <br><br>
+                <input type="submit" name="topic" value="topic" >
+                    </form>    
+                        
+                       <hr>
+                    
+         <form action="{% url 'entity' %}"style=" width: 150vw; margin-left : 25vw;">
+                {% csrf_token %}
+                 HTML: <input type="text" required name="Text5"style="width:400px; height:50px;"> <br><br>
+                 <input type="submit" name="entity" value="entity" >
+            </form>    
+                
+               <hr>   
+            
+          
+          
+          
+          <p>Click the "Submit" button and the form-data will be sent to a page on the 
+            server called "action_page.php".</p> 
+          
+        
+            <script type="module">
+              // Import the functions you need from the SDKs you need
+              import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+              import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-analytics.js";
+              // TODO: Add SDKs for Firebase products that you want to use
+              // https://firebase.google.com/docs/web/setup#available-libraries
+            
+              // Your web app's Firebase configuration
+              // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+              const firebaseConfig = {
+                apiKey: "AIzaSyDJIV3L1vm640N8PXfttIVOweFXhgvPR0o",
+                authDomain: "sentiment2-79ecf.firebaseapp.com",
+                projectId: "sentiment2-79ecf",
+                storageBucket: "sentiment2-79ecf.appspot.com",
+                messagingSenderId: "100093318453",
+                appId: "1:100093318453:web:159457bcd9455c267d687c",
+                measurementId: "G-JKJVHJX8N0"
+              };
+            
+              // Initialize Firebase
+              const app = initializeApp(firebaseConfig);
+              const analytics = getAnalytics(app);
+            </script>            
+            
+    </body>
+</html> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
